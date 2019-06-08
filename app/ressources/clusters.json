@@ -1,0 +1,130 @@
+[
+  {
+    "IATA": "ams",
+    "cityname": "Amsterdam, Netherlands"
+  },
+  {
+    "IATA": "atl",
+    "cityname": "Atlanta, USA"
+  },
+  {
+    "IATA": "bom",
+    "cityname": "Mumbai, India"
+  },
+  {
+    "IATA": "dxb",
+    "cityname": "Dubai, UAE"
+  },
+  {
+    "IATA": "eat",
+    "cityname": "Wenatchee, États-Unis"
+  },
+  {
+    "IATA": "fra",
+    "cityname": "Frankfurt, Germany"
+  },
+  {
+    "IATA": "gnrt",
+    "cityname": "Tokyo, Japan"
+  },
+  {
+    "IATA": "gru",
+    "cityname": "Sao Paulo, Brazil"
+  },
+  {
+    "IATA": "hkg",
+    "cityname": "Hong Kong"
+  },
+  {
+    "IATA": "iad",
+    "cityname": "Washington DC, USA"
+  },
+  {
+    "IATA": "jnb",
+    "cityname": "Cape Town, South Africa"
+  },
+  {
+    "IATA": "lax",
+    "cityname": "Los Angeles, USA"
+  },
+  {
+    "IATA": "lhr",
+    "cityname": "London, UK"
+  },
+  {
+    "IATA": "lim",
+    "cityname": "Lima, Peru"
+  },
+  {
+    "IATA": "lux",
+    "cityname": "Luxembourg"
+  },
+  {
+    "IATA": "maa",
+    "cityname": "Chennai, India"
+  },
+  {
+    "IATA": "mad",
+    "cityname": "Madrid, Spain"
+  },
+  {
+    "IATA": "man",
+    "cityname": "Manila, Philippines"
+  },
+  {
+    "IATA": "okc",
+    "cityname": "Oklahoma, USA"
+  },
+  {
+    "IATA": "ord",
+    "cityname": "Chicago, USA"
+  },
+  {
+    "IATA": "par",
+    "cityname": "Paris, France"
+  },
+  {
+    "IATA": "scl",
+    "cityname": "Santiago, Chile"
+  },
+  {
+    "IATA": "sea",
+    "cityname": "Seattle, USA"
+  },
+  {
+    "IATA": "sgp",
+    "cityname": "Singapore"
+  },
+  {
+    "IATA": "shb",
+    "cityname": "Nakashibetsu, Japon"
+  },
+  {
+    "IATA": "sto",
+    "cityname": "Stockholm, Sweden"
+  },
+  {
+    "IATA": "sto2",
+    "cityname": "Stockholm, Sweden"
+  },
+  {
+    "IATA": "syd",
+    "cityname": "Sydney, Australie"
+  },
+  {
+    "IATA": "tyo",
+    "cityname": "Tokyo, Japan"
+  },
+  {
+    "IATA": "tyo1",
+    "cityname": "Tokyo, Japan"
+  },
+  {
+    "IATA": "vie",
+    "cityname": "Vienna, Austria"
+  },
+  {
+    "IATA": "waw",
+    "cityname": "Warsaw, Poland"
+  }
+ ]

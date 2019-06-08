@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="app/assets/css/style.css">
+  <link rel="stylesheet" href="app/assets/css/nav.css">
+  <link rel="stylesheet" href="app/assets/css/global.css">
+  <link rel="stylesheet" href="app/assets/css/variables.css">
+  <link rel="stylesheet" href="app/assets/css/demo.css">
+
+  <title>CSGO MM Server Picker</title>
+</head>
+
+<body>
+  <nav class="nav js-nav">
+    <header class="nav-header">
+      <h1 class="nav-title"><strong>CSGO </strong>MM server picker</h1>
+      <svg class="nav-header-icon">
+        <use xlink:href="assets/img/icons.svg#icon-electron"></use>
+      </svg>
+    </header>
+
+    <center>
+      <button class="demo-button" id="ping">Ping servers</button>
+    </center>
+
+    <div class="demo-protip">
+      <h2>Select specific servers :</h2>
+
+      <span id='servers-list'>
+        
+      </span>
+    </div>
+
+    <center><button class="demo-button" id="firewall-block">GO GO GO</button> <button class="demo-button" id="firewall-reset">Reset</button></center>
+
+    <footer class="nav-footer">
+      <button type="button" id="button-about" data-modal="about" class="nav-footer-button">About</button>
+      <a class="nav-footer-logo" href="https://github.com" aria-label="Homepage">
+        <svg class="nav-footer-icon">
+          <use xlink:href="assets/img/icons.svg#icon-love"></use>
+        </svg>
+      </a>
+    </footer>
+  </nav>
+
+  <main class="content">
+    <button class="demo-button" id="eu-west">EU WEST<br /><span id="time-eu-west"></span></button>
+    <button class="demo-button" id="eu-east">EU EAST<br /><span id="time-eu-east"></span></button>
+    <button class="demo-button" id="na-west">NA WEST<br /><span id="time-na-west"></span></button>
+    <button class="demo-button" id="na-east">NA EAST<br /><span id="time-na-east"></span></button>
+    <button class="demo-button" id="sa">SA<br /><span id="time-sa"></span></button>
+    <button class="demo-button" id="oc">OC<br /><span id="time-oc"></span></button>
+    <button class="demo-button" id="af">AF<br /><span id="time-af"></span></button>
+    <button class="demo-button" id="as">AS<br /><span id="time-as"></span></button>
+  </main>
+</body>
+
+<script type="text/javascript">
+  require('./app/renderer-process/world-map');
+  require('./app/renderer-process/left-menu');
+</script>
+
+</html>

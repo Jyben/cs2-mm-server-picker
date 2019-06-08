@@ -1,0 +1,234 @@
+#ping {
+  color:hsl(222, 53%, 50%); 
+}
+
+#firewall-block {
+  color:hsl(222, 53%, 50%); 
+}
+
+#firewall-reset {
+  color: hsl(330, 65%, 48%);
+}
+
+#eu-west {
+  position: absolute;
+  left: 580px;
+  top: 140px;
+}
+
+#eu-east {
+  position: absolute;
+  left: 800px;
+  top: 140px;
+}
+
+#na-east {
+  position: absolute;
+  left: 191px;
+  top: 160px;
+}
+
+#na-west {
+  position: absolute;
+  left: 40px;
+  top: 160px;
+}
+
+#af {
+  position: absolute;
+  left: 635px;
+  top: 290px;
+}
+
+#sa {
+  position: absolute;
+  left: 285px;
+  top: 400px;
+}
+
+#oc {
+  position: absolute;
+  left: 1155px;
+  top: 500px;
+}
+
+#as {
+  position: absolute;
+  left: 1000px;
+  top: 220px;
+}
+
+
+#btn-ams {
+  position: absolute;
+  left: 610px;
+  top: 115px;
+}
+
+#btn-atl {
+  position: absolute;
+  left: 222px;
+  top: 222px;
+}
+
+#btn-bom {
+  position: absolute;
+  left: 929px;
+  top: 296px;
+}
+
+#btn-dxb {
+  position: absolute;
+  left: 846px;
+  top: 266px;
+}
+
+#btn-eat {
+  position: absolute;
+  left: 120px;
+  top: 173px;
+}
+
+#btn-fra {
+  position: absolute;
+  left: 644px;
+  top: 140px;
+}
+
+#btn-gru {
+  position: absolute;
+  left: 397px;
+  top: 524px;
+}
+
+#btn-hkg {
+  position: absolute;
+  left: 1110px;
+  top: 273px;
+}
+
+#btn-iad {
+  position: absolute;
+  left: 259px;
+  top: 202px;
+}
+
+#btn-jnb {
+  position: absolute;
+  left: 680px;
+  top: 566px;
+}
+
+#btn-lax {
+  position: absolute;
+  left: 81px;
+  top: 230px;
+}
+
+#btn-lhr {
+  position: absolute;
+  left: 577px;
+  top: 125px;
+}
+
+#btn-lim {
+  position: absolute;
+  left: 246px;
+  top: 471px;
+}
+
+#btn-lux {
+  position: absolute;
+  left: 612px;
+  top: 150px;
+}
+
+#btn-maa {
+  position: absolute;
+  left: 966px;
+  top: 333px;
+}
+
+#btn-mad {
+  position: absolute;
+  left: 582px;
+  top: 190px;
+}
+
+#btn-man {
+  position: absolute;
+  left: 1142px;
+  top: 307px;
+}
+
+#btn-okc {
+  position: absolute;
+  left: 168px;
+  top: 225px;
+}
+
+#btn-ord {
+  position: absolute;
+  left: 231px;
+  top: 184px;
+}
+
+#btn-par {
+  position: absolute;
+  left: 585px;
+  top: 152px;
+}
+
+#btn-scl {
+  position: absolute;
+  left: 282px;
+  top: 577px;
+}
+
+#btn-sea {
+  position: absolute;
+  left: 80px;
+  top: 163px;
+}
+
+#btn-sgp {
+  position: absolute;
+  left: 1069px;
+  top: 379px;
+}
+
+#btn-shb {
+  position: absolute;
+  left: 1207px;
+  top: 160px;
+}
+
+#btn-sto {
+  position: absolute;
+  left: 660px;
+  top: 86px;
+}
+
+#btn-syd {
+  position: absolute;
+  left: 1258px;
+  top: 566px;
+}
+
+#btn-tyo {
+  position: absolute;
+  left: 1198px;
+  top: 205px;
+}
+
+#btn-vie {
+  position: absolute;
+  left: 682px;
+  top: 152px;
+}
+
+#btn-waw {
+  position: absolute;
+  left: 695px;
+  top: 125px;
+}
