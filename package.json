@@ -12,8 +12,8 @@
     "electron-prebuilt-compile": "^4.0.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "ping": "^0.2.2",
+    "axios": "^0.18.1",
+    "ping-lite": "^2.0.2",
     "sudo-prompt": "^8.2.5"
   }
 }

@@ -1,4 +1,4 @@
-import Ping from './ping';
+import PingWrapper from './ping';
 import ServersService from '../services/servers';
 import Clusters from '../models/clusters';
 import Firewall from './firewall';
@@ -17,7 +17,7 @@ ipcMain.on('request-ping', (event) => {
     const clusters = new Clusters(response.data);
     clusters.convert();
 
-    const ping = new Ping(clusters, win);
+    const ping = new PingWrapper(clusters, win);
     ping.execute();
   }).catch((error) => {
     console.log(error);
@@ -44,8 +44,14 @@ ipcMain.on('request-reset-firewall', (event) => {
         clusters.pops[id].relayAddresses.splice(clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
       });
 
-      new Firewall(clusters.pops[id].relayAddresses).reset();
+      if (process.platform == 'linux') {
+        new Firewall(clusters.pops[id].relayAddresses).reset();
+      }
     });
+
+    if (process.platform == 'win32') {
+      new Firewall().reset();
+    }
 
   }).catch((error) => {
     console.log(error);

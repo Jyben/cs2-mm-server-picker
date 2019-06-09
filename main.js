@@ -3,7 +3,7 @@ import path from 'path';
 import glob from 'glob';
 import ServersService from './app/services/servers';
 import Clusters from './app/models/clusters';
-import Ping from './app/main-process/ping';
+import PingWrapper from './app/main-process/ping';
 
 // Gardez une reference globale de l'objet window, si vous ne le faites pas, la fenetre sera
 // fermee automatiquement quand l'objet JavaScript sera garbage collected.
@@ -71,7 +71,7 @@ async function getServersFile() {
     const clusters = new Clusters(response.data);
     clusters.convert();
 
-    const ping = new Ping(clusters, win);
+    const ping = new PingWrapper(clusters, win);
     ping.execute();
   }).catch((error) => {
     console.log(error);

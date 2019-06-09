@@ -14,7 +14,7 @@ export default class Firewall {
 
     switch (process.platform) {
       case 'win32':
-        this._execBash(`netsh advfirewall firewall add rule name="csgo-mm-server-picker" dir=in action=block remoteip=${multipleIp}`);
+        this._execBash(`netsh advfirewall firewall add rule name="csgo-mm-server-picker" dir=out action=block remoteip=${multipleIp}`);
         break;
 
       case 'linux':
@@ -32,7 +32,6 @@ export default class Firewall {
 
   // Réinisitalise les règles du firewall
   reset() {
-    const multipleIp = this._hosts.join();
 
     switch (process.platform) {
       case 'win32':
@@ -40,6 +39,8 @@ export default class Firewall {
         break;
 
       case 'linux':
+        const multipleIp = this._hosts.join();
+
         this._execBash(`iptables -D INPUT -s ${multipleIp} -j DROP`);
         break;
 

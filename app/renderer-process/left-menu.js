@@ -60,15 +60,10 @@ ipcRenderer.on('add-specific-servers', (event, arg) => {
 function updateServerList(checked, id) {
   let idSplit = id.split('-');
   id = idSplit[1];
-
-  console.log(hostsListNotFiltered);
-
+  
   hostsListNotFiltered.forEach(host => {
     if (host.id === id) {
       checked ? ipListFiltered.splice(ipListFiltered.indexOf(host.ip), 1) : ipListFiltered.push(host.ip);
     }
   });
-  
-  console.log(ipListFiltered);
-  
 }
