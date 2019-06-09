@@ -7,10 +7,8 @@ ipcRenderer.on('request-update-ping', (event, arg) => {
   let continentId = arg[0];
   let time = arg[1];
   let span = document.getElementById(`time-${continentId}`);
-  
-  if (time !== 'unknown') {
-    span.textContent = `${time} ms`;
-  }
+
+  span.textContent = (time !== 0 ? `${time} ms` : `X`);
 
 });
 
@@ -26,6 +24,10 @@ ipcRenderer.on('update-ip-list', (event, arg) => {
   host.alive = arg[5];
 
   ipList.push(host);
+});
+
+ipcRenderer.on('spinner', (event, arg) => {
+  document.getElementById("loader").style.display = arg[0] === true ? 'block' : 'none';
 });
 
 const clusters = ['eu-west','eu-east','na-west','na-east','sa','oc','af','as'];

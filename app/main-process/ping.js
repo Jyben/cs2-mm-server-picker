@@ -21,7 +21,7 @@ export default class PingWrapper {
           var ping = new Ping(host);
 
           ping.send((err, time) => {
-            
+
             if (err === null && time !== null) {
               this._updateClusterStatus(host, time, true);
             }
@@ -30,13 +30,16 @@ export default class PingWrapper {
             }
           });
 
-          setTimeout(function() {
+          setTimeout(function () {
             ping.stop();
           }, 30000);
         });
       });
     } catch (error) {
       console.log(error);
+    }
+    finally {
+      this._mainWindow.webContents.send('spinner', [false]);
     }
   }
 
@@ -46,7 +49,7 @@ export default class PingWrapper {
       this._clusters.clustersId.forEach(id => {
 
         this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
-          
+
           if (relayAddresse === host) {
             this._mainWindow.webContents.send('update-ip-list', [id, host, this._clusters.pops[id].cityName, this._clusters.pops[id].continentId, time, alive]);
 

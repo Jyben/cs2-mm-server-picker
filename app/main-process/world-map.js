@@ -1,7 +1,5 @@
 const { ipcMain, BrowserWindow } = require('electron');
 
-let ip = [];
-
 // Constitue la liste des IP à bannir lors des clique sur les boutons
 ipcMain.on('add-cluster-in-ip-rules', (event, arg) => {
   const win = BrowserWindow.fromWebContents(event.sender);

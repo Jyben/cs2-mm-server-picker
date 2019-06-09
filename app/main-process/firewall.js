@@ -61,9 +61,7 @@ export default class Firewall {
     };
     sudo.exec(command, options,
       function (error, stdout, stderr) {
-        if (stderr != '') {
-          console.log('stderr: ' + stderr);
-        }
+        console.log('stderr: ' + stderr);
       }
     );
 

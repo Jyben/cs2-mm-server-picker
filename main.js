@@ -22,6 +22,8 @@ function initialize() {
   
     // Ouvre les DevTools.
     win.webContents.openDevTools();
+
+    win.setMenu(null);
   
     // Émit lorsque la fenêtre est fermée.
     win.on('closed', () => {

@@ -7,29 +7,23 @@ const { ipcMain, BrowserWindow } = require('electron');
 
 // Exécute un ping ordonné par l'utilisateur
 ipcMain.on('request-ping', (event) => {
-  const win = BrowserWindow.fromWebContents(event.sender);
-  
-  const request = async () => {
-    return new ServersService().getServersList();
-  }
-
-  request().then((response) => {
-    const clusters = new Clusters(response.data);
-    clusters.convert();
-
-    const ping = new PingWrapper(clusters, win);
-    ping.execute();
-  }).catch((error) => {
-    console.log(error);
-  });
+  ping(event);
 });
 
 ipcMain.on('request-block-firewall', (event, ipList) => {
+  const win = BrowserWindow.fromWebContents(event.sender);
+  win.webContents.send('spinner', [true]);
+
   const firewall = new Firewall(ipList);
   firewall.exec();
+
+  ping(event);
 });
 
 ipcMain.on('request-reset-firewall', (event) => {
+  const win = BrowserWindow.fromWebContents(event.sender);
+  win.webContents.send('spinner', [true]);
+  
   const request = async () => {
     return new ServersService().getServersList();
   }
@@ -53,7 +47,28 @@ ipcMain.on('request-reset-firewall', (event) => {
       new Firewall().reset();
     }
 
+    ping(event);
+
   }).catch((error) => {
     console.log(error);
   });
 });
+
+function ping(event) {
+  const win = BrowserWindow.fromWebContents(event.sender);
+  win.webContents.send('spinner', [true]);
+  
+  const request = async () => {
+    return new ServersService().getServersList();
+  }
+
+  request().then((response) => {
+    const clusters = new Clusters(response.data);
+    clusters.convert();
+
+    const ping = new PingWrapper(clusters, win);
+    ping.execute();
+  }).catch((error) => {
+    console.log(error);
+  });
+}

@@ -6,14 +6,17 @@ let resetBtn = document.getElementById('firewall-reset');
 
 pingBtn.addEventListener('click', () => {
   ipcRenderer.send('request-ping');
+  resetListOfServers();
 });
 
 goBtn.addEventListener('click', () => {
   ipcRenderer.send('request-block-firewall', ipListFiltered);
+  resetListOfServers();
 });
 
 resetBtn.addEventListener('click', () => {
   ipcRenderer.send('request-reset-firewall');
+  resetListOfServers();
 });
 
 let serversList = [];
@@ -29,6 +32,10 @@ ipcRenderer.on('add-specific-servers', (event, arg) => {
   let spanServersList = document.getElementById('servers-list');
 
   hosts.forEach(host => {
+
+    if (host.time == 0) {
+      return;
+    }
 
     serversList.forEach(server => {
       if (server.cityName === host.cityName) {
@@ -54,16 +61,25 @@ ipcRenderer.on('add-specific-servers', (event, arg) => {
 
     check = false;
   });
-
 });
+
+function resetListOfServers() {
+  let span = document.getElementById('servers-list');
+  span.innerHTML = ``;
+
+  serversList = [];
+  ipListFiltered = [];
+  hostsListNotFiltered = [];
+}
 
 function updateServerList(checked, id) {
   let idSplit = id.split('-');
   id = idSplit[1];
-  
+
   hostsListNotFiltered.forEach(host => {
     if (host.id === id) {
       checked ? ipListFiltered.splice(ipListFiltered.indexOf(host.ip), 1) : ipListFiltered.push(host.ip);
     }
   });
 }
+
