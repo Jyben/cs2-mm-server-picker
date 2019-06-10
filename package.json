@@ -4,16 +4,36 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "electron-builder"
   },
   "author": "Jyben",
   "license": "ISC",
   "devDependencies": {
-    "electron-prebuilt-compile": "^4.0.0"
+    "electron-builder": "^20.43.0",
+    "axios": "^0.18.1",
+    "ping-lite": "^2.0.2",
+    "sudo-prompt": "^8.2.5",
+    "electron": "^5.0.3"
   },
   "dependencies": {
+    "glob": "^7.1.4",
     "axios": "^0.18.1",
     "ping-lite": "^2.0.2",
     "sudo-prompt": "^8.2.5"
+  },
+  "build": {
+    "appId": "com.jbn.csgommserverpicker",
+    "dmg": {},
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS"
+    }
   }
 }

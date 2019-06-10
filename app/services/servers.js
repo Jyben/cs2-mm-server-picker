@@ -1,11 +1,12 @@
-import Axios from "axios";
+const Axios = require('axios');
 
-export default class ServersService {
+let ServersService = function () { }
 
-  getServersList() {
-    return Axios({
-      url: `https://raw.githubusercontent.com/SteamDatabase/SteamTracking/master/Random/NetworkDatagramConfig.json`,
-      method: 'get'
-    });
-  }
+ServersService.prototype.getServersList = function () {
+  return Axios({
+    url: `https://raw.githubusercontent.com/SteamDatabase/SteamTracking/master/Random/NetworkDatagramConfig.json`,
+    method: 'get'
+  });
 }
+
+module.exports = ServersService;

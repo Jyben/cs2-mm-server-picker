@@ -1,71 +1,83 @@
-import Ping from 'ping-lite';
+const Ping = require('ping-lite');
 
-export default class PingWrapper {
-  constructor(clusters, window) {
-    this._clusters = clusters;
-    this._mainWindow = window;
-  }
+let PingWrapper = function (clusters, window) {
+  this._clusters = clusters;
+  this._mainWindow = window;
+}
 
-  // Lance le ping sur tous les serveurs de Valve
-  execute() {
-    try {
-      this._clusters.clustersId.forEach(id => {
+// Lance le ping sur tous les serveurs de Valve
+PingWrapper.prototype.execute = function () {
+  try {
+    this._clusters.clustersId.forEach(id => {
 
-        this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
-          this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
-        });
-
-        const hosts = this._clusters.pops[id].relayAddresses;
-
-        hosts.forEach(host => {
-          var ping = new Ping(host);
-
-          ping.send((err, time) => {
-
-            if (err === null && time !== null) {
-              this._updateClusterStatus(host, time, true);
-            }
-            else {
-              this._updateClusterStatus(host, 0, false);
-            }
-          });
-
-          setTimeout(function () {
-            ping.stop();
-          }, 30000);
-        });
+      this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
+        this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
       });
-    } catch (error) {
-      console.log(error);
-    }
-    finally {
-      this._mainWindow.webContents.send('spinner', [false]);
-    }
-  }
 
-  // Mets à jour le status des serveurs et informe l'IHM
-  _updateClusterStatus(host, time, alive) {
-    try {
-      this._clusters.clustersId.forEach(id => {
+      const hosts = this._clusters.pops[id].relayAddresses;
 
-        this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
+      hosts.forEach(host => {
+        var ping = new Ping(host);
 
-          if (relayAddresse === host) {
-            this._mainWindow.webContents.send('update-ip-list', [id, host, this._clusters.pops[id].cityName, this._clusters.pops[id].continentId, time, alive]);
+        ping.send((err, time) => {
 
-            if (time < this._clusters.pops[id].status.time || this._clusters.pops[id].status.time === 0) {
-
-              this._clusters.pops[id].status.isAlive = alive;
-              this._clusters.pops[id].status.time = time;
-
-              this._mainWindow.webContents.send('request-update-ping', [this._clusters.pops[id].continentId, this._clusters.pops[id].status.time]);
-
-            }
+          if (err === null && time !== null) {
+            this._updateClusterStatus(host, time, true);
+          }
+          else {
+            this._updateClusterStatus(host, 0, false);
           }
         });
+
+        setTimeout(function () {
+          ping.stop();
+        }, 30000);
       });
-    } catch (error) {
-      console.log(error);
-    }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  finally {
+    this._mainWindow.webContents.send('spinner', [false]);
   }
 }
+
+// Mets à jour le status des serveurs et informe l'IHM
+PingWrapper.prototype._updateClusterStatus = function (host, time, alive) {
+  try {
+
+    this._clusters.clustersId.forEach(id => {
+      
+      let i = 0;
+      let checkAlive = false;
+      let checkTime = 0;
+
+      this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
+        if (relayAddresse === host) {
+          this._mainWindow.webContents.send('update-ip-list', [id, host, this._clusters.pops[id].cityName, this._clusters.pops[id].continentId, time, alive]);
+
+          if (time < this._clusters.pops[id].status.time || this._clusters.pops[id].status.time === 0) {
+
+            if (!checkAlive && alive) {
+              checkAlive = true;
+              checkTime = time;
+            }
+
+            this._clusters.pops[id].status.isAlive = alive;
+            this._clusters.pops[id].status.time = time;
+
+            if (alive) {
+              this._mainWindow.webContents.send('request-update-ping', [this._clusters.pops[id].continentId, this._clusters.pops[id].status.time]);
+            }
+
+          }
+        }
+        i++;
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+module.exports = PingWrapper;

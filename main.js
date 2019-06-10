@@ -1,9 +1,9 @@
-import { app, BrowserWindow } from 'electron';
-import path from 'path';
-import glob from 'glob';
-import ServersService from './app/services/servers';
-import Clusters from './app/models/clusters';
-import PingWrapper from './app/main-process/ping';
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+const glob = require('glob');
+const ServersService = require('./app/services/servers');
+const { Clusters } = require('./app/models/clusters');
+const PingWrapper = require('./app/main-process/ping');
 
 // Gardez une reference globale de l'objet window, si vous ne le faites pas, la fenetre sera
 // fermee automatiquement quand l'objet JavaScript sera garbage collected.
@@ -64,6 +64,8 @@ function initialize() {
 }
 
 async function getServersFile() {
+
+  win.webContents.send('spinner', [true]);
 
   const request = async () => {
     return new ServersService().getServersList();

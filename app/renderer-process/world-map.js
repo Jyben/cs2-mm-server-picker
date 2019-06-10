@@ -1,12 +1,15 @@
-import { ipcRenderer } from 'electron';
+const { ipcRenderer } = require('electron');
 
 let ipList = [];
+let spanList = [];
 
 // Mets à jour le ping sur les boutons
 ipcRenderer.on('request-update-ping', (event, arg) => {
   let continentId = arg[0];
   let time = arg[1];
   let span = document.getElementById(`time-${continentId}`);
+
+  spanList.push(`time-${continentId}`);
 
   span.textContent = (time !== 0 ? `${time} ms` : `X`);
 
@@ -28,6 +31,15 @@ ipcRenderer.on('update-ip-list', (event, arg) => {
 
 ipcRenderer.on('spinner', (event, arg) => {
   document.getElementById("loader").style.display = arg[0] === true ? 'block' : 'none';
+});
+
+ipcRenderer.on('reset-worldmap-iplist', (event, arg) => {
+  ipList = [];
+  spanList.forEach(spanName => {
+    let span = document.getElementById(spanName);
+
+    span.textContent = '';
+  });
 });
 
 const clusters = ['eu-west','eu-east','na-west','na-east','sa','oc','af','as'];

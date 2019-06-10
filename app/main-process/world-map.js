@@ -10,7 +10,9 @@ ipcMain.on('add-cluster-in-ip-rules', (event, arg) => {
   let ipList = [];
 
   hostList.forEach(host => {
-    ipList.push(host.ip);
+    if (host.alive) {
+      ipList.push(host.ip);
+    }
   });
 
   win.webContents.send('add-specific-servers', [result, ipList, hostList]);

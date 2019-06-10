@@ -1,4 +1,4 @@
-import { ipcRenderer } from 'electron';
+const { ipcRenderer } = require('electron');
 
 let pingBtn = document.getElementById('ping');
 let goBtn = document.getElementById('firewall-block');
@@ -25,9 +25,13 @@ let hostsListNotFiltered = [];
 
 ipcRenderer.on('add-specific-servers', (event, arg) => {
   let hosts = arg[0];
-  ipListFiltered = arg[1];
+  if (ipListFiltered.length === 0) {
+    ipListFiltered = arg[1];
+  }
   hostsListNotFiltered = arg[2];
   let check = false;
+
+  console.log(ipListFiltered);
 
   let spanServersList = document.getElementById('servers-list');
 
@@ -81,5 +85,8 @@ function updateServerList(checked, id) {
       checked ? ipListFiltered.splice(ipListFiltered.indexOf(host.ip), 1) : ipListFiltered.push(host.ip);
     }
   });
+
+  console.log(ipListFiltered);
+
 }
 
