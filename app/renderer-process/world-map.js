@@ -2,12 +2,16 @@ const { ipcRenderer } = require('electron');
 
 let ipList = [];
 let spanList = [];
+const clusters = ['eu-west', 'eu-east', 'na-west', 'na-east', 'sa', 'oc', 'af', 'as'];
 
 // Mets à jour le ping sur les boutons
 ipcRenderer.on('request-update-ping', (event, arg) => {
   let continentId = arg[0];
   let time = arg[1];
   let span = document.getElementById(`time-${continentId}`);
+  let dot = document.getElementById(continentId);
+
+  dot.className = 'dot-green';
 
   spanList.push(`time-${continentId}`);
 
@@ -40,17 +44,21 @@ ipcRenderer.on('reset-worldmap-iplist', (event, arg) => {
 
     span.textContent = '';
   });
-});
 
-const clusters = ['eu-west','eu-east','na-west','na-east','sa','oc','af','as'];
+  clusters.forEach(id => {
+    let dot = document.getElementById(id);
+
+    dot.className = 'dot-red';
+  });
+
+});
 
 // Ajout d'un event sur chaque boutons
 clusters.forEach(id => {
-
   let clusterBtn = document.getElementById(id);
 
   clusterBtn.addEventListener('click', () => {
-      ipcRenderer.send('add-cluster-in-ip-rules', [id, ipList]);
+    ipcRenderer.send('add-cluster-in-ip-rules', [id, ipList]);
   });
 });
 

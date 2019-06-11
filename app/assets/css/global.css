@@ -138,11 +138,11 @@ kbd {
 /* Content ------------------ */
 
 .content {
-  flex: 1;
   position: relative;
   overflow: hidden;
-  width: 1300px;
-  background-image:url("../img/map_no_pins_lakes.png");
+  width: 100%;
+  background-image:url("../img/worldmap-dark.png");
+  background-size: 100%;
 }
 .content.is-shown {
   visibility: visible;;

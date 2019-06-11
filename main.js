@@ -15,7 +15,7 @@ function initialize() {
 
   function createWindow() {
     // Créer le browser window.
-    win = new BrowserWindow({ show: false, width: 1640, height: 705, webPreferences: {nodeIntegration: true} });
+    win = new BrowserWindow({ show: false, width: 1200, height: 475, webPreferences: {nodeIntegration: true} });
   
     // et charge le index.html de l'application.
     win.loadFile('./index.html');
