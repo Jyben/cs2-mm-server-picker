@@ -30,9 +30,6 @@ ipcRenderer.on('add-specific-servers', (event, arg) => {
   }
   hostsListNotFiltered = arg[2];
   let check = false;
-
-  console.log(ipListFiltered);
-
   let spanServersList = document.getElementById('servers-list');
 
   hosts.forEach(host => {
@@ -85,8 +82,5 @@ function updateServerList(checked, id) {
       checked ? ipListFiltered.splice(ipListFiltered.indexOf(host.ip), 1) : ipListFiltered.push(host.ip);
     }
   });
-
-  console.log(ipListFiltered);
-
 }
 
