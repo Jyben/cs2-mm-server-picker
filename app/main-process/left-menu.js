@@ -31,9 +31,6 @@ ipcMain.on('request-reset-firewall', (event) => {
     const clusters = new Clusters(response.data);
     clusters.convert();
 
-    console.log(clusters);
-    
-
     clusters.clustersId.forEach(id => {
 
       clusters.pops[id].relayAddresses.forEach(relayAddresse => {
@@ -44,8 +41,6 @@ ipcMain.on('request-reset-firewall', (event) => {
         new Firewall(clusters.pops[id].relayAddresses, win).reset();
       }
     });
-
-    console.log(clusters);
 
     if (process.platform == 'win32') {
       new Firewall(null, win).reset();

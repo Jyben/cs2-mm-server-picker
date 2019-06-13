@@ -1,7 +1,7 @@
 /* Nav */
 
 .nav {
-  width: 450px;
+  width: 500px;
   overflow-x: hidden;
   overflow-y: auto;
   color: var(--color-subtle);
@@ -26,6 +26,7 @@
   font-weight: 300;
   line-height: 1;
   margin: 0;
+  text-align: center;
 }
 
 .nav-title strong {
@@ -101,7 +102,7 @@
 
 .nav-footer {
   margin-top: 1rem;
-  padding: 2rem;
+  padding: 1rem;
   border-top: 1px solid var(--color-border);
   text-align: center;
 }
@@ -116,20 +117,14 @@
 }
 
 .nav-footer-button {
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin-bottom: .75rem;
   line-height: 2;
-  text-align: left;
   font: inherit;
   font-size: 13px;
   color: inherit;
   border: none;
   background-color: transparent;
-  cursor: default;
+  cursor: pointer;
   outline: none;
-  text-align: center;
 }
 .nav-footer-button:focus {
   color: var(--color-strong);

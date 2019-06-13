@@ -139,8 +139,8 @@
   border: 2px solid;
   border-radius: 4px;
   font: inherit;
-  font-size: 1.2em;
-  padding: .4em 1.2em;
+  font-size: 1.0em;
+  padding: .2em 1.2em;
   color: inherit;
   background-color: transparent;
 }
@@ -194,7 +194,7 @@
 
 .demo-protip {
   margin-top: 2rem;
-  padding: 1.5rem 2rem 2rem 2rem;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
   border-radius: 6px;
   background: hsl(194, 60%, 36%) linear-gradient(hsla(0,0%,100%,.85), hsla(0,0%,100%,.85));
   margin: 20px;
