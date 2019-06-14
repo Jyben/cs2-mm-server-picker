@@ -1,8 +1,10 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, shell } = require('electron');
 
 let pingBtn = document.getElementById('ping');
 let goBtn = document.getElementById('firewall-block');
 let resetBtn = document.getElementById('firewall-reset');
+let bananaBtn = document.getElementById('button-banana');
+let aboutBtn = document.getElementById('button-about');
 
 pingBtn.addEventListener('click', () => {
   ipcRenderer.send('request-ping');
@@ -17,6 +19,14 @@ goBtn.addEventListener('click', () => {
 resetBtn.addEventListener('click', () => {
   ipcRenderer.send('request-reset-firewall');
   resetListOfServers();
+});
+
+aboutBtn.addEventListener('click', () => {
+  shell.openExternal('https://csgo-mm-server-picker.com');
+});
+
+bananaBtn.addEventListener('click', () => {
+  shell.openExternal('https://gamebanana.com');
 });
 
 let serversList = [];

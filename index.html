@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:">
 
   <link rel="stylesheet" href="app/assets/css/style.css">
   <link rel="stylesheet" href="app/assets/css/nav.css">
@@ -17,9 +17,6 @@
   <nav class="nav js-nav">
     <header class="nav-header">
       <h1 class="nav-title"><strong>CS:GO </strong>MM server picker</h1>
-      <svg class="nav-header-icon">
-        <use xlink:href="assets/img/icons.svg#icon-electron"></use>
-      </svg>
     </header>
 
     <center>
@@ -47,13 +44,10 @@
     </center>
 
     <footer class="nav-footer">
-      <button type="button" id="button-about" data-modal="about" class="nav-footer-button">🌐 About</button>•
-      <button type="button" id="button-about" data-modal="about" class="nav-footer-button">🍌 GameBanana</button>
-      <a class="nav-footer-logo" href="https://github.com" aria-label="Homepage">
-        <svg class="nav-footer-icon">
-          <use xlink:href="assets/img/icons.svg#icon-love"></use>
-        </svg>
-      </a>
+      <center>
+       <button type="button" id="button-about" data-modal="about" class="nav-footer-button">🌐 About</button>•
+        <button type="button" id="button-banana" data-modal="about" class="nav-footer-button">🍌 GameBanana</button>
+      </center>
     </footer>
   </nav>
 
