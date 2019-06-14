@@ -1,7 +1,7 @@
-const PingWrapper = require( './ping');
-const ServersService = require( '../services/servers');
-const { Clusters } = require( '../models/clusters');
-const Firewall = require( './firewall');
+const PingWrapper = require('./ping');
+const ServersService = require('../services/servers');
+const { Clusters } = require('../models/clusters');
+const Firewall = require('./firewall');
 const { ipcMain, BrowserWindow } = require('electron');
 
 // Exécute un ping ordonné par l'utilisateur
@@ -14,15 +14,15 @@ ipcMain.on('request-block-firewall', (event, ipList) => {
   win.webContents.send('spinner', [true]);
   win.webContents.send('reset-worldmap-iplist');
 
-  const firewall = new Firewall(ipList, win);
-  firewall.exec();
+  const firewall = new Firewall(win);
+  firewall.exec(ipList);
 });
 
 ipcMain.on('request-reset-firewall', (event) => {
   const win = BrowserWindow.fromWebContents(event.sender);
   win.webContents.send('spinner', [true]);
   win.webContents.send('reset-worldmap-iplist');
-  
+
   const request = async () => {
     return new ServersService().getServersList();
   }
@@ -31,19 +31,12 @@ ipcMain.on('request-reset-firewall', (event) => {
     const clusters = new Clusters(response.data);
     clusters.convert();
 
-    clusters.clustersId.forEach(id => {
+    if (process.platform === 'linux') {
+      new Firewall(win, clusters.clustersId, clusters).reset();
+    }
 
-      clusters.pops[id].relayAddresses.forEach(relayAddresse => {
-        clusters.pops[id].relayAddresses.splice(clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
-      });
-
-      if (process.platform == 'linux') {
-        new Firewall(clusters.pops[id].relayAddresses, win).reset();
-      }
-    });
-
-    if (process.platform == 'win32') {
-      new Firewall(null, win).reset();
+    if (process.platform === 'win32') {
+      new Firewall(win).reset();
     }
   }).catch((error) => {
     console.log(error);
@@ -54,7 +47,7 @@ function ping(event) {
   const win = BrowserWindow.fromWebContents(event.sender);
   win.webContents.send('spinner', [true]);
   win.webContents.send('reset-worldmap-iplist');
-  
+
   const request = async () => {
     return new ServersService().getServersList();
   }

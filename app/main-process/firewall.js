@@ -3,15 +3,16 @@ const { Clusters } = require('../models/clusters');
 const PingWrapper = require('./ping');
 const ServersService = require('../services/servers');
 
-let Firewall = function (hosts, win) {
-  this._hosts = hosts;
+let Firewall = function (win, clustersId, clusters) {
+  this._clustersId = clustersId;
+  this._clusters = clusters;
   this._win = win;
 }
 
-Firewall.prototype.exec = function () {
-  const multipleIp = this._hosts.join();
+Firewall.prototype.exec = function (ipList) {
+  const multipleIp = ipList.join();
 
-  this.reset();
+  // this.reset();
 
   switch (process.platform) {
     case 'win32':
@@ -38,9 +39,20 @@ Firewall.prototype.reset = function () {
       break;
 
     case 'linux':
-      const multipleIp = this._hosts.join();
+      let command = '';
 
-      _execBash(`iptables -D INPUT -s ${multipleIp} -j DROP`, this._win);
+      this._clusters.clustersId.forEach(id => {
+
+        this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
+          this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
+        });
+
+        let multipleIp = this._clusters.pops[id].relayAddresses.join();
+
+        command += `iptables -D INPUT -s ${multipleIp} -j DROP;`;
+      });
+
+      _execBash(command, this._win);
       break;
 
     case 'darwin':
@@ -54,7 +66,7 @@ Firewall.prototype.reset = function () {
 
 function _execBash(command, win) {
   const options = {
-    name: 'Electron'
+    name: 'csgommserverpicker'
   };
 
   sudo.exec(command, options,

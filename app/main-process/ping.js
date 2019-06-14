@@ -48,9 +48,7 @@ PingWrapper.prototype._updateClusterStatus = function (host, time, alive) {
 
     this._clusters.clustersId.forEach(id => {
       
-      let i = 0;
       let checkAlive = false;
-      let checkTime = 0;
 
       this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
         if (relayAddresse === host) {
@@ -72,7 +70,6 @@ PingWrapper.prototype._updateClusterStatus = function (host, time, alive) {
 
           }
         }
-        i++;
       });
     });
   } catch (error) {
