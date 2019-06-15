@@ -8,9 +8,8 @@
     "pack": "build --dir",
     "dist": "electron-builder"
   },
-  "author": "Jyben",
+  "author": "Jyben <benjamin.letessier@gmail.com>",
   "license": "creativecommons",
-  "email": "benjamin.letessier@gmail.com",
   "devDependencies": {
     "electron-builder": "^20.43.0",
     "axios": "^0.18.1",

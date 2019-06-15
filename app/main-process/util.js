@@ -1,10 +1,17 @@
 const fs = require('fs');
+const { app } = require('electron');
 
 let Files = function () { }
 
 Files.prototype.create = function (content) {
 
-  const fileName = 'ipRules.sh';
+  const fileName = `${app.getPath('home')}/csgo-mm-server-picker/ipRules.sh`;
+
+  console.log(app.getPath('home'));
+
+  if (!fs.existsSync(`${app.getPath('home')}/csgo-mm-server-picker`)) {
+    fs.mkdirSync(`${app.getPath('home')}/csgo-mm-server-picker`);
+  }
 
   fs.writeFile(fileName, content, (err) => {
     if (err) {

@@ -58,7 +58,7 @@ Firewall.prototype.reset = function () {
 
       new Files().create(command);
 
-      _execBash(`sh ${app.getAppPath()}/ipRules.sh`, this._win);
+      _execBash(`sh ${app.getPath('home')}/csgo-mm-server-picker/ipRules.sh`, this._win);
       break;
 
     case 'darwin':
