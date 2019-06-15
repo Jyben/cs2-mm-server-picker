@@ -39,7 +39,7 @@ Firewall.prototype.reset = function () {
       break;
 
     case 'linux':
-      let command = '';
+      let multipleIp
 
       this._clusters.clustersId.forEach(id => {
 
@@ -47,10 +47,10 @@ Firewall.prototype.reset = function () {
           this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
         });
 
-        let multipleIp = this._clusters.pops[id].relayAddresses.join();
-
-        command += `iptables -D INPUT -s ${multipleIp} -j DROP;`;
+        multipleIp += this._clusters.pops[id].relayAddresses.join();
       });
+
+      let command = `iptables -D INPUT -s ${multipleIp} -j DROP`;
 
       _execBash(command, this._win);
       break;
