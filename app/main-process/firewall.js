@@ -1,7 +1,9 @@
+const { app } = require('electron');
 const sudo = require('sudo-prompt');
 const { Clusters } = require('../models/clusters');
 const PingWrapper = require('./ping');
 const ServersService = require('../services/servers');
+const Files = require('./util');
 
 let Firewall = function (win, clustersId, clusters) {
   this._clustersId = clustersId;
@@ -39,7 +41,7 @@ Firewall.prototype.reset = function () {
       break;
 
     case 'linux':
-      let multipleIp
+      let command = '';
 
       this._clusters.clustersId.forEach(id => {
 
@@ -47,12 +49,16 @@ Firewall.prototype.reset = function () {
           this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
         });
 
-        multipleIp += this._clusters.pops[id].relayAddresses.join();
+        this._clusters.pops[id].relayAddresses.forEach(addresse => {
+          command += `iptables -D INPUT -s ${addresse} -j DROP\n`;
+        });
       });
 
-      let command = `iptables -D INPUT -s ${multipleIp} -j DROP`;
+      command = `#!/bin/bash\n${command}`;
 
-      _execBash(command, this._win);
+      new Files().create(command);
+
+      _execBash(`sh ${app.getAppPath()}/ipRules.sh`, this._win);
       break;
 
     case 'darwin':
