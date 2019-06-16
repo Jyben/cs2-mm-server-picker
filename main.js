@@ -4,6 +4,7 @@ const glob = require('glob');
 const ServersService = require('./app/services/servers');
 const { Clusters } = require('./app/models/clusters');
 const PingWrapper = require('./app/main-process/ping');
+const { autoUpdater } = require('electron-updater');
 
 // Gardez une reference globale de l'objet window, si vous ne le faites pas, la fenetre sera
 // fermee automatiquement quand l'objet JavaScript sera garbage collected.
@@ -23,7 +24,7 @@ function initialize() {
     // Ouvre les DevTools.
     // win.webContents.openDevTools();
 
-    win.removeMenu();
+    win.setMenuBarVisibility(false);
 
     // Émit lorsque la fenêtre est fermée.
     win.on('closed', () => {
@@ -36,6 +37,11 @@ function initialize() {
     win.once('ready-to-show', () => {
       win.show();
       getServersFile();
+
+      const log = require("electron-log")
+      log.transports.file.level = "debug"
+      autoUpdater.logger = log
+      autoUpdater.checkForUpdatesAndNotify()
     });
   }
 
