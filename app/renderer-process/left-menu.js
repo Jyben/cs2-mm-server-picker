@@ -74,6 +74,10 @@ ipcRenderer.on('add-specific-servers', (event, arg) => {
   });
 });
 
+ipcRenderer.on('version', (event, arg) => {
+  document.getElementById('version').textContent = arg[0];
+});
+
 function resetListOfServers() {
   let span = document.getElementById('servers-list');
   span.innerHTML = ``;

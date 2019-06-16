@@ -5,9 +5,8 @@ const ServersService = require('./app/services/servers');
 const { Clusters } = require('./app/models/clusters');
 const PingWrapper = require('./app/main-process/ping');
 const { autoUpdater } = require('electron-updater');
+const log = require('electron-log');
 
-// Gardez une reference globale de l'objet window, si vous ne le faites pas, la fenetre sera
-// fermee automatiquement quand l'objet JavaScript sera garbage collected.
 let win;
 
 function initialize() {
@@ -22,7 +21,7 @@ function initialize() {
     win.loadFile('./index.html');
 
     // Ouvre les DevTools.
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
 
     win.setMenuBarVisibility(false);
 
@@ -38,10 +37,11 @@ function initialize() {
       win.show();
       getServersFile();
 
-      const log = require("electron-log")
-      log.transports.file.level = "debug"
-      autoUpdater.logger = log
-      autoUpdater.checkForUpdatesAndNotify()
+      log.transports.file.level = "debug";
+      autoUpdater.logger = log;
+      autoUpdater.checkForUpdatesAndNotify();
+
+      win.webContents.send('version', [app.getVersion()]);
     });
   }
 
@@ -52,20 +52,15 @@ function initialize() {
 
   // Quitte l'application quand toutes les fenêtres sont fermées.
   app.on('window-all-closed', () => {
-    // Sur macOS, il est commun pour une application et leur barre de menu
-    // de rester active tant que l'utilisateur ne quitte pas explicitement avec Cmd + Q
     if (process.platform !== 'darwin') {
       app.quit();
     }
   });
 
   app.on('activate', () => {
-    // Sur macOS, il est commun de re-créer une fenêtre de l'application quand
-    // l'icône du dock est cliquée et qu'il n'y a pas d'autres fenêtres d'ouvertes.
     if (win === null) {
       createWindow();
     }
-
   });
 }
 
