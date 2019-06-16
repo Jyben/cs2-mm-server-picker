@@ -36,11 +36,7 @@ function initialize() {
     win.once('ready-to-show', () => {
       win.show();
       getServersFile();
-
-      log.transports.file.level = "debug";
-      autoUpdater.logger = log;
-      autoUpdater.checkForUpdatesAndNotify();
-
+      getUpdate();
       win.webContents.send('version', [app.getVersion()]);
     });
   }
@@ -91,6 +87,12 @@ function loadMainFiles() {
   } catch (error) {
     console.log(error);
   }
+}
+
+function getUpdate() {
+  log.transports.file.level = "debug";
+  autoUpdater.logger = log;
+  autoUpdater.checkForUpdatesAndNotify();
 }
 
 initialize();

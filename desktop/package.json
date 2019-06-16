@@ -1,6 +1,6 @@
 {
   "name": "csgo-mm-server-picker-2",
-  "version": "v0.0.9",
+  "version": "v1.0.1",
   "description": "Server picker for CS:GO matchmaking",
   "main": "main.js",
   "scripts": {
