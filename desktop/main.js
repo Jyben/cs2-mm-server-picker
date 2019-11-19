@@ -21,7 +21,7 @@ function initialize() {
     win.loadFile('./index.html');
 
     // Ouvre les DevTools.
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
     win.setMenuBarVisibility(false);
 
