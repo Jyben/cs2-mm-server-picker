@@ -5,6 +5,7 @@ let goBtn = document.getElementById('firewall-block');
 let resetBtn = document.getElementById('firewall-reset');
 let bananaBtn = document.getElementById('button-banana');
 let aboutBtn = document.getElementById('button-about');
+let csgoBtn = document.getElementById('csgo');
 
 pingBtn.addEventListener('click', () => {
   ipcRenderer.send('request-ping');
@@ -27,6 +28,10 @@ aboutBtn.addEventListener('click', () => {
 
 bananaBtn.addEventListener('click', () => {
   shell.openExternal('https://gamebanana.com');
+});
+
+csgoBtn.addEventListener('click', () => {
+  shell.openExternal('steam://rungame/730/76561202255233023/');
 });
 
 let serversList = [];
