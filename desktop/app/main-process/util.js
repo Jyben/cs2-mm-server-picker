@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { app } = require('electron');
+const { app, dialog } = require('electron');
 
 let Files = function () { }
 
@@ -15,7 +15,8 @@ Files.prototype.create = function (content) {
 
   fs.writeFile(fileName, content, (err) => {
     if (err) {
-      console.log("An error ocurred creating the file " + err.message)
+      console.log("An error ocurred creating the file " + err.message);
+      dialog.showErrorBox("An error ocurred creating the file " + err.message);
     }
 
     console.log("The file has been succesfully saved");
