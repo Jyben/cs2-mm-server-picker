@@ -23,7 +23,7 @@ resetBtn.addEventListener('click', () => {
 });
 
 aboutBtn.addEventListener('click', () => {
-  shell.openExternal('https://csgo-mm-server-picker.com');
+  shell.openExternal('https://github.com/Jyben/csgo-mm-server-picker');
 });
 
 bananaBtn.addEventListener('click', () => {
@@ -39,13 +39,13 @@ let ipListFiltered = [];
 let hostsListNotFiltered = [];
 
 ipcRenderer.on('add-specific-servers', (event, arg) => {
-  let hosts = arg[0];
+  const hosts = arg[0];
   if (ipListFiltered.length === 0) {
     ipListFiltered = arg[1];
   }
   hostsListNotFiltered = arg[2];
   let check = false;
-  let spanServersList = document.getElementById('servers-list');
+  const spanServersList = document.getElementById('servers-list');
 
   hosts.forEach(host => {
 
@@ -64,15 +64,25 @@ ipcRenderer.on('add-specific-servers', (event, arg) => {
 
       serversList.push(host);
 
-      let span = document.createElement('span');
-      span.innerHTML = `<input type="checkbox" id="checkbox-${host.id}"> ${host.cityName} | <strong> ${host.time} </strong>ms <br />`;
+      const input = document.createElement('input');
+      input.setAttribute('type', 'checkbox');
+      input.setAttribute('id', `checkbox-${host.id}`);
+      input.setAttribute('value', 'checkbox');
+      const span = document.createElement('span');
+      span.appendChild(input);
+      const strong = document.createElement('strong');
+      strong.appendChild(document.createTextNode(`${host.time}`));
+      span.appendChild(document.createTextNode(` ${host.cityName} | `));
+      span.appendChild(strong);
+      span.appendChild(document.createTextNode(' ms'));
+      const br = document.createElement('br');
+      span.appendChild(br);
       spanServersList.appendChild(span);
 
-      let checkbox = document.getElementById(`checkbox-${host.id}`);
+      const checkbox = document.getElementById(`checkbox-${host.id}`);
       checkbox.addEventListener('change', (e) => {
         updateServerList(e.target.checked, e.target.id);
       });
-
     }
 
     check = false;
@@ -84,7 +94,7 @@ ipcRenderer.on('version', (event, arg) => {
 });
 
 function resetListOfServers() {
-  let span = document.getElementById('servers-list');
+  const span = document.getElementById('servers-list');
   span.innerHTML = ``;
 
   serversList = [];
@@ -93,7 +103,7 @@ function resetListOfServers() {
 }
 
 function updateServerList(checked, id) {
-  let idSplit = id.split('-');
+  const idSplit = id.split('-');
   id = idSplit[1];
 
   hostsListNotFiltered.forEach(host => {
