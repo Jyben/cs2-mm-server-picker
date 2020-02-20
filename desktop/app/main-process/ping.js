@@ -1,4 +1,5 @@
 const Ping = require('ping-lite');
+const log = require('./log');
 
 let PingWrapper = function (clusters, window) {
   this._clusters = clusters;
@@ -35,7 +36,7 @@ PingWrapper.prototype.execute = function () {
       });
     });
   } catch (error) {
-    console.log(error);
+    log.error(error);
   }
   finally {
     this._mainWindow.webContents.send('spinner', [false]);
@@ -45,9 +46,8 @@ PingWrapper.prototype.execute = function () {
 // Mets à jour le status des serveurs et informe l'IHM
 PingWrapper.prototype._updateClusterStatus = function (host, time, alive) {
   try {
-
     this._clusters.clustersId.forEach(id => {
-      
+
       let checkAlive = false;
 
       this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
@@ -73,7 +73,7 @@ PingWrapper.prototype._updateClusterStatus = function (host, time, alive) {
       });
     });
   } catch (error) {
-    console.log(error);
+    log.error(error);
   }
 }
 

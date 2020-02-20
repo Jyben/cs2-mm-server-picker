@@ -25,6 +25,7 @@
     "electron-updater": "^4.0.6",
     "glob": "^7.1.4",
     "ping-lite": "^2.0.2",
+    "simple-node-logger": "^18.12.24",
     "sudo-prompt": "^8.2.5"
   },
   "build": {

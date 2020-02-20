@@ -4,6 +4,7 @@ const { Clusters } = require('../models/clusters');
 const PingWrapper = require('./ping');
 const ServersService = require('../services/servers');
 const Files = require('./util');
+const log = require('./log');
 
 let Firewall = function (win, clustersId, clusters) {
   this._clustersId = clustersId;
@@ -13,8 +14,6 @@ let Firewall = function (win, clustersId, clusters) {
 
 Firewall.prototype.exec = function (ipList) {
   const multipleIp = ipList.join();
-
-  // this.reset();
 
   switch (process.platform) {
     case 'win32':
@@ -77,13 +76,15 @@ function _execBash(command, win) {
 
   sudo.exec(command, options,
     function (error, stdout, stderr) {
-      ping(win);
-      console.log('stderr: ' + stderr);
+      _ping(win);
+      if (stderr !== '' && !stderr.toUpperCase().includes('BAD RULE')) {
+        log.error(`stderr: ${stderr}`);
+      }
     }
   );
 }
 
-function ping(win) {
+function _ping(win) {
   const request = async () => {
     return new ServersService().getServersList();
   }
@@ -95,7 +96,7 @@ function ping(win) {
     const ping = new PingWrapper(clusters, win);
     ping.execute();
   }).catch((error) => {
-    console.log(error);
+    log.error(error);
   });
 }
 
