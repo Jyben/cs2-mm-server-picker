@@ -1,7 +1,7 @@
 const { app } = require('electron');
 const opts = {
     errorEventName: 'error',
-    logDirectory: `${app.getPath('home')}/csgo-mm-server-picker/`,
+    logDirectory: `./`,
     fileNamePattern: 'csgo-mm-server-picker-<DATE>.log',
     dateFormat: 'YYYY.MM.DD'
 };
