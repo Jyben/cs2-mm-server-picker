@@ -1,6 +1,6 @@
 # **CS:GO** MM SERVER PICKER
 
-![app](https://drive.google.com/uc?export=view&id=14OxqTD7u3pzgGsZv4UYC9b3Nne2RZWXk)
+![app](https://github.com/Jyben/csgo-mm-server-picker/blob/master/app/assets/img/app.gif)
 
 ## Download
 Avaible on Windows & Linux : [download](https://github.com/Jyben/csgo-mm-server-picker/releases/latest)
