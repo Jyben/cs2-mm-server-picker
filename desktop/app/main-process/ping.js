@@ -1,4 +1,4 @@
-const Ping = require('ping-lite');
+const Ping = require('./ping-lite');
 const log = require('./log');
 
 let PingWrapper = function (clusters, window) {
