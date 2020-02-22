@@ -17,7 +17,6 @@ Firewall.prototype.exec = function (ipList) {
 
   switch (process.platform) {
     case 'win32':
-      this.reset();
       _execBash(`netsh advfirewall firewall add rule name="csgo-mm-server-picker" dir=out action=block remoteip=${multipleIp}`, this._win);
       break;
 
