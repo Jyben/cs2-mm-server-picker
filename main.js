@@ -87,7 +87,11 @@ function getUpdate() {
 }
 
 function imAlive() {
-  new AliveService().postImalive();
+  try {
+    new AliveService().postImalive();
+  } catch (error) {
+    log.error(error);
+  }
 }
 
 initialize();
