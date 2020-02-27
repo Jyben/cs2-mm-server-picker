@@ -65,7 +65,7 @@ async function getServersFile() {
     const ping = new PingWrapper(clusters, win);
     ping.execute();
   }).catch((error) => {
-    log.error(error);
+    log.error(error.stack);
   });
 }
 
@@ -76,7 +76,7 @@ function loadMainFiles() {
 
     files.forEach((file) => { require(file) });
   } catch (error) {
-    log.error(error);
+    log.error(error.stack);
   }
 }
 
@@ -90,7 +90,7 @@ function imAlive() {
   try {
     new AliveService().postImalive();
   } catch (error) {
-    log.error(error);
+    log.error(error.stack);
   }
 }
 

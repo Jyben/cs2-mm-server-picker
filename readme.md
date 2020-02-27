@@ -36,7 +36,7 @@ Linux app image :
 
 ## Report a bug
 
-Please provide the log file when you report an issue, you can find the files under the name "csgo-mm-server-picker-date.log" here :
+Please provide the log file when you report an issue, you can find the files under the name "csgo-mm-server-picker.log" here :
 
 Windows : 
 

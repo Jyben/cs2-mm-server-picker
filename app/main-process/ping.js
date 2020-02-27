@@ -36,7 +36,7 @@ PingWrapper.prototype.execute = function () {
       });
     });
   } catch (error) {
-    log.error(error);
+    log.error(error.stack);
   }
   finally {
     this._mainWindow.webContents.send('spinner', [false]);
@@ -73,7 +73,7 @@ PingWrapper.prototype._updateClusterStatus = function (host, time, alive) {
       });
     });
   } catch (error) {
-    log.error(error);
+    log.error(error.stack);
   }
 }
 

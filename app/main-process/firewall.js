@@ -96,7 +96,7 @@ function _ping(win) {
     const ping = new PingWrapper(clusters, win);
     ping.execute();
   }).catch((error) => {
-    log.error(error);
+    log.error(error.stack);
   });
 }
 
