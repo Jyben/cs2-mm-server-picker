@@ -77,7 +77,7 @@ function _execBash(command, win) {
   sudo.exec(command, options,
     function (error, stdout, stderr) {
       _ping(win);
-      if (stderr !== '' && !stderr.toUpperCase().includes('BAD RULE')) {
+      if (stderr !== '' && stderr !== undefined && !stderr.toUpperCase().includes('BAD RULE')) {
         log.error(`stderr: ${stderr}`);
       }
     }
