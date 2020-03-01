@@ -27,7 +27,7 @@ aboutBtn.addEventListener('click', () => {
 });
 
 bananaBtn.addEventListener('click', () => {
-  shell.openExternal('https://gamebanana.com');
+  shell.openExternal('https://gamebanana.com/tools/6773');
 });
 
 csgoBtn.addEventListener('click', () => {
