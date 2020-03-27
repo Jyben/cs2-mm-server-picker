@@ -2,6 +2,7 @@ const { ipcRenderer } = require('electron');
 
 let ipList = [];
 let spanList = [];
+let isLoading = false;
 const clusters = ['eu-west', 'eu-east', 'na-west', 'na-east', 'sa', 'oc', 'af', 'as'];
 
 // Mets à jour le ping sur les boutons
@@ -34,7 +35,8 @@ ipcRenderer.on('update-ip-list', (event, arg) => {
 });
 
 ipcRenderer.on('spinner', (event, arg) => {
-  document.getElementById("loader").style.display = arg[0] === true ? 'block' : 'none';
+  isLoading = arg[0];
+  document.getElementById("loader").style.display = isLoading === true ? 'block' : 'none';
 });
 
 ipcRenderer.on('reset-worldmap-iplist', (event, arg) => {
@@ -58,6 +60,10 @@ clusters.forEach(id => {
   let clusterBtn = document.getElementById(id);
 
   clusterBtn.addEventListener('click', () => {
+    if (isLoading) {
+      return;
+    }
+
     ipcRenderer.send('add-cluster-in-ip-rules', [id, ipList]);
   });
 });
