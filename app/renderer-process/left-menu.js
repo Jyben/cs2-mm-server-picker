@@ -48,11 +48,6 @@ ipcRenderer.on('add-specific-servers', (event, arg) => {
   const spanServersList = document.getElementById('servers-list');
 
   hosts.forEach(host => {
-
-    if (host.time == 0) {
-      return;
-    }
-
     serversList.forEach(server => {
       if (server.cityName === host.cityName) {
         check = true;

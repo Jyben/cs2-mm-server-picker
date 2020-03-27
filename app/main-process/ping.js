@@ -32,7 +32,7 @@ PingWrapper.prototype.execute = function () {
 
         setTimeout(function () {
           ping.stop();
-        }, 30000);
+        }, 1000);
       });
     });
   } catch (error) {
