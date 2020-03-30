@@ -90,7 +90,7 @@ function getUpdate() {
 
 function imAlive() {
   try {
-    new AliveService().postImalive();
+    new AliveService().postImalive(app.getVersion());
   } catch (error) {
     log.error(error.stack);
   }
