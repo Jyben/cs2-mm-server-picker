@@ -12,6 +12,10 @@ Administrator rights are required to block the IP addresses of the servers. For 
 The IP addresses are automatically updated without any action on my part and the application is updated automatically.  
 This app is developed with the [Electron](https://electronjs.org/) framework.
 
+## Disclaimer
+
+Since we do not have direct access to the IP addresses of the game servers but only to the relayed addresses, you may not be connected to the desired server. The application is therefore used to get as close as possible to the desired server.
+
 ## Tips
 
 - You can launch CS:GO with the associate button 
