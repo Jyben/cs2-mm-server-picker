@@ -1,6 +1,6 @@
 {
   "name": "csgo-mm-server-picker",
-  "version": "v1.1.1",
+  "version": "v1.1.2",
   "description": "Server picker for CS:GO matchmaking",
   "main": "main.js",
   "scripts": {
@@ -16,13 +16,13 @@
     "url": "https://github.com/Jyben/csgo-mm-server-picker.git"
   },
   "devDependencies": {
-    "electron": "^8.2.0",
+    "electron": "^8.3.2",
     "electron-builder": "^20.44.4"
   },
   "dependencies": {
     "axios": "^0.18.1",
     "electron-log": "^3.0.6",
-    "electron-updater": "^4.2.5",
+    "electron-updater": "^4.3.1",
     "glob": "^7.1.4",
     "simple-node-logger": "^18.12.24",
     "sudo-prompt": "^8.2.5"

@@ -11,7 +11,13 @@ PingWrapper.prototype.execute = function () {
   try {
     this._clusters.clustersId.forEach(id => {
 
+      if (this._clusters.pops[id].relayAddresses === undefined) this._clusters.pops[id].relayAddresses = [];
+
       this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
+        if (relayAddresse === undefined) {
+          this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1);
+          return;
+        }
         this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
       });
 
