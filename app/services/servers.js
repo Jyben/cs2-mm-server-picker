@@ -6,7 +6,7 @@ let serversList = null;
 ServersService.prototype.getServersList = function () {
   if (serversList === null) {
     serversList = Axios({
-      url: `https://raw.githubusercontent.com/SteamDatabase/SteamTracking/master/Random/NetworkDatagramConfig.json`,
+      url: `https://steamcdn-a.akamaihd.net/apps/sdr/network_config.json`,
       method: 'get'
     })
   }
