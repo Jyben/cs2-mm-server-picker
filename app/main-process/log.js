@@ -5,6 +5,6 @@ const opts = {
     fileNamePattern: 'csgo-mm-server-picker.log',
     dateFormat: 'YYYY.MM.DD'
 };
-const log = require('simple-node-logger').createRollingFileLogger(opts);
+const log = require('./simple-node-logger/index').createRollingFileLogger(opts);
 
 module.exports = log;
