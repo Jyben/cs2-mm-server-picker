@@ -1,0 +1,72 @@
+{
+  "_args": [
+    [
+      "simple-node-logger@18.12.24",
+      "C:\\Users\\benja\\Documents\\dev\\csgo-mm-server-picker\\csgo-mm-server-picker\\desktop"
+    ]
+  ],
+  "_from": "simple-node-logger@18.12.24",
+  "_id": "simple-node-logger@18.12.24",
+  "_inBundle": false,
+  "_integrity": "sha512-4dTqpYecHsvPjWo+i+J3pLty8WJDNbxOVesNj5ch8pYH95LIGAFH4dxMSqyf+Os0RTchXifEtI/mfm3AVJftmg==",
+  "_location": "/simple-node-logger",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "simple-node-logger@18.12.24",
+    "name": "simple-node-logger",
+    "escapedName": "simple-node-logger",
+    "rawSpec": "18.12.24",
+    "saveSpec": null,
+    "fetchSpec": "18.12.24"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/simple-node-logger/-/simple-node-logger-18.12.24.tgz",
+  "_spec": "18.12.24",
+  "_where": "C:\\Users\\benja\\Documents\\dev\\csgo-mm-server-picker\\csgo-mm-server-picker\\desktop",
+  "author": {
+    "name": "darryl.west@raincitysoftware.com"
+  },
+  "bugs": {
+    "url": "https://github.com/darrylwest/simple-node-logger/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.17.12",
+    "moment": "^2.20.1"
+  },
+  "description": "A node console and file logger suitable for small, medium and large production projects.",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^6.0.1",
+    "mocha": "^5.2.0",
+    "random-fixture-data": "^2.0.17"
+  },
+  "files": [
+    "index.js",
+    "lib/",
+    "test/mocks"
+  ],
+  "homepage": "https://github.com/darrylwest/simple-node-logger",
+  "keywords": [
+    "log",
+    "logger",
+    "multi-appender",
+    "file logger",
+    "rolling file logger",
+    "console logger"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "simple-node-logger",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/darrylwest/simple-node-logger.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "version": "18.12.24"
+}
