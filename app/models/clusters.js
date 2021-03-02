@@ -23,6 +23,7 @@ Converter.prototype.convert = function (clusterInstance) {
   clusterInstance.pops['canu'] = new ClusterBase((pops.canu === undefined ? undefined : pops.canu.relay_addresses), '', '');
   clusterInstance.pops['dxb'] = new ClusterBase((pops.dxb === undefined ? undefined : pops.dxb.relay_addresses), 'Dubai', 'as');
   clusterInstance.pops['eat'] = new ClusterBase((pops.eat === undefined ? undefined : pops.eat.relay_addresses), 'Wenatchee', 'na-west');
+  clusterInstance.pops['eze'] = new ClusterBase((pops.eze === undefined ? undefined : pops.eze.relay_addresses), 'Buenos Aires', 'sa');
   clusterInstance.pops['fra'] = new ClusterBase((pops.fra === undefined ? undefined : pops.fra.relay_addresses), 'Frankfurt', 'eu-west');
   clusterInstance.pops['gnrt'] = new ClusterBase((pops.gnrt === undefined ? undefined : pops.gnrt.relay_addresses), '', '');
   clusterInstance.pops['gru'] = new ClusterBase((pops.gru === undefined ? undefined : pops.gru.relay_addresses), 'Sao Paulo', 'sa');
@@ -90,7 +91,7 @@ let Status = function () {
 let Clusters = function (data) {
   this.converter = new Converter(data);
   this.pops = [];
-  this.clustersId = ['ams', 'atl', 'auw2', 'bom', 'can', 'dxb', 'eat', 'fra', 'gru', 'hkg', 'iad', 'jnb', 'lax', 'lhr', 'lim', 'lux', 'maa', 'mad', 'man', 'okc', 'ord', 'par', 'pwg', 'pwj', 'pwu', 'pww', 'pwz', 'scl', 'sea', 'sgp', 'sha', 'shb', 'sto', 'syd', 'tsn', 'tyo', 'vie', 'waw'];
+  this.clustersId = ['ams', 'atl', 'auw2', 'bom', 'can', 'dxb', 'eat', 'eze', 'fra', 'gru', 'hkg', 'iad', 'jnb', 'lax', 'lhr', 'lim', 'lux', 'maa', 'mad', 'man', 'okc', 'ord', 'par', 'pwg', 'pwj', 'pwu', 'pww', 'pwz', 'scl', 'sea', 'sgp', 'sha', 'shb', 'sto', 'syd', 'tsn', 'tyo', 'vie', 'waw'];
 }
 
 Clusters.prototype.convert = function () {
