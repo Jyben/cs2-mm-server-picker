@@ -3,7 +3,7 @@
 ![app](https://github.com/Jyben/csgo-mm-server-picker/blob/master/app/assets/img/app.gif)
 
 ## Download
-Avaible on Windows & Linux : [download](https://github.com/Jyben/csgo-mm-server-picker/releases/latest)
+Available on Windows & Linux : [download](https://github.com/Jyben/csgo-mm-server-picker/releases/latest)
 
 ## Description
 
