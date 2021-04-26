@@ -1,0 +1,38 @@
+{
+  "name": "csgo-mm-picker-cli",
+  "version": "0.0.1",
+  "description": "A command-line interface option for the CSGO Matchmaking Server Picker",
+  "main": "cli-main.js",
+  "scripts": {
+    "test": "echo \"No tests currently available.\" && exit 1",
+    "csgo-server-picker": "node cli-main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jyben/csgo-mm-server-picker.git"
+  },
+  "devDependencies": {
+    "electron": "^9.4.0",
+    "electron-builder": "^22.9.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "electron-log": "^3.0.6",
+    "electron-updater": "^4.3.1",
+    "glob": "^7.1.4",
+    "simple-node-logger": "^18.12.24",
+    "sudo-prompt": "^8.2.5",
+    "yargs": "^16.2.0"
+  },
+  "keywords": [
+    "csgo",
+    "mm",
+    "cli"
+  ],
+  "author": "Adam Grande",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jyben/csgo-mm-server-picker/issues"
+  },
+  "homepage": "https://github.com/Jyben/csgo-mm-server-picker#readme"
+}
