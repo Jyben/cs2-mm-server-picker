@@ -96,6 +96,10 @@
     "cityname": "Seattle, USA"
   },
   {
+    "IATA": "seo",
+    "cityname": "Seoul, South Korea"
+  },
+  {
     "IATA": "sgp",
     "cityname": "Singapore"
   },
