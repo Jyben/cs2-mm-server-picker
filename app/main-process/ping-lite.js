@@ -19,8 +19,8 @@ function Ping(host, options) {
   events.EventEmitter.call(this);
 
   if (WIN) {
-    this._bin = 'c:/windows/system32/ping.exe';
-    this._args = (options.args) ? options.args : ['-n', '1', '-w', '1000', host];
+    this._bin = (process.env.SystemRoot || process.env.windir) + '\\system32\\cmd.exe';
+    this._args = ['/U','/C','%SYSTEMROOT%\\System32\\chcp.com 65001 && %SYSTEMROOT%\\System32\\ping.exe -n 1 -w 5000 ' + host];
     this._regmatch = /[><=]([0-9.]+?)\s*ms/; // No space before "ms"
   }
   else if (LIN) {
