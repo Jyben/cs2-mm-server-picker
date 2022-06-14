@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, shell, dialog } = require('electron');
 const path = require('path');
 const glob = require('glob');
 const ServersService = require('./app/services/servers');
@@ -8,7 +8,7 @@ const { autoUpdater } = require('electron-updater');
 const logE = require('electron-log');
 const Files = require('./app/main-process/util');
 const log = require('./app/main-process/log');
-const AliveService = require('./app/services/alive');
+const AnalyticsService = require('./app/services/analytics');
 
 let win;
 
@@ -31,6 +31,7 @@ function initialize() {
       win.show();
       getServersFile();
       getUpdate();
+      getMessage();
       win.webContents.send('version', [app.getVersion()]);
     });
   }
@@ -83,14 +84,42 @@ function loadMainFiles() {
 }
 
 function getUpdate() {
-  logE.transports.file.level = "debug";
+  logE.transports.file.level = 'debug';
   autoUpdater.logger = logE;
   autoUpdater.checkForUpdatesAndNotify();
 }
 
 function imAlive() {
   try {
-    new AliveService().postImalive(app.getVersion());
+    new AnalyticsService().postImalive(app.getVersion());
+  } catch (error) {
+    log.error(error.stack);
+  }
+}
+
+async function getMessage() {
+  try {
+    var result = await new AnalyticsService().getMessage();
+
+    if (result === undefined || result.data === undefined || result.data.message === undefined) {
+      return;
+    }
+
+    const options = {
+      type: 'info',
+      buttons: ['Ok'],
+      defaultId: 2,
+      title: result.data.message.title,
+      message: result.data.message.content,
+    };
+
+    var response = dialog.showMessageBox(null, options);
+    response.then(() => {
+      if (result.data.message.action !== undefined && result.data.message.action.type === "url") {
+        shell.openExternal(result.data.message.action.content);
+      }
+    });
+
   } catch (error) {
     log.error(error.stack);
   }
