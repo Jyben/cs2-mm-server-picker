@@ -72,3 +72,12 @@ To build and package :
 ```sh
 $ npm run dist
 ```
+
+[contributors-shield]: https://img.shields.io/github/contributors/Jyben/csgo-mm-server-picker.svg?style=for-the-badge
+[contributors-url]: https://github.com/Jyben/csgo-mm-server-picker/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Jyben/csgo-mm-server-picker.svg?style=for-the-badge
+[forks-url]: https://github.com/Jyben/csgo-mm-server-picker/network/members
+[stars-shield]: https://img.shields.io/github/stars/Jyben/csgo-mm-server-picker.svg?style=for-the-badge
+[stars-url]: https://github.com/Jyben/csgo-mm-server-picker/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Jyben/csgo-mm-server-picker.svg?style=for-the-badge
+[issues-url]: https://github.com/Jyben/csgo-mm-server-picker/issues
