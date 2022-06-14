@@ -1,6 +1,15 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
 # **CS:GO** MM SERVER PICKER
 
 ![app](https://github.com/Jyben/csgo-mm-server-picker/blob/master/app/assets/img/app.gif)
+
+## Prerequisites
+
+On Windows, the app create a new rule in your firewall. **So you have to activate it.**
 
 ## Download
 Available on Windows & Linux : [download](https://github.com/Jyben/csgo-mm-server-picker/releases/latest)
@@ -25,10 +34,6 @@ Since we do not have direct access to the IP addresses of the game servers but o
 - You can select several regions and servers
 - The reset button also reset your selection of servers in the list
 - The application updates itself (you just have to restart it when asked)
-
-## Prerequisites
-
-On Windows, the app create a new rule in your firewall. So you have to activate it.
 
 ## Installation
 
