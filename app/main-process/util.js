@@ -6,6 +6,10 @@ let Files = function () { }
 
 Files.prototype.create = function (content) {
 
+  if (process.platform !== 'linux') {
+    return;
+  }
+
   const fileName = `${app.getPath('home')}/csgo-mm-server-picker/ipRules.sh`;
 
   if (!fs.existsSync(`${app.getPath('home')}/csgo-mm-server-picker`)) {
