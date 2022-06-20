@@ -88,6 +88,10 @@ ipcRenderer.on('version', (event, arg) => {
   document.getElementById('version').textContent = arg[0];
 });
 
+ipcRenderer.on('disableFirewallMessage', (event, arg) => {
+  document.getElementById('firewallMessage').textContent = "";
+});
+
 function resetListOfServers() {
   const span = document.getElementById('servers-list');
   span.innerHTML = ``;

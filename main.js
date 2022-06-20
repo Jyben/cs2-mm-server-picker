@@ -32,6 +32,7 @@ function initialize() {
       getServersFile();
       getUpdate();
       getMessage();
+      getFirewallStatusOnWindows();
       win.webContents.send('version', [app.getVersion()]);
     });
   }
@@ -123,6 +124,22 @@ async function getMessage() {
   } catch (error) {
     log.error(error.stack);
   }
+}
+
+function getFirewallStatusOnWindows() {
+  var cmd = "Invoke-Command -ScriptBlock {[Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey(\"LocalMachine\",$env:COMPUTERNAME).OpenSubKey(\"System\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\StandardProfile\").GetValue(\"EnableFirewall\")}";
+
+  if (process.platform !== 'win32') {
+    return;
+  }
+
+  const { exec } = require('child_process');
+  exec(cmd, { 'shell': 'powershell.exe' }, (error, stdout, stderr) => {
+    if (stdout == 1) {
+      win.webContents.send('disableFirewallMessage');
+    }
+  })
+
 }
 
 initialize();
