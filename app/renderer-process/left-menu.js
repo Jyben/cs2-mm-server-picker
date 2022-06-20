@@ -88,6 +88,10 @@ ipcRenderer.on('version', (event, arg) => {
   document.getElementById('version').textContent = arg[0];
 });
 
+ipcRenderer.on('enableFirewallMessage', (event, arg) => {
+  document.getElementById('firewallMessage').textContent = "You must enable Windows Firewall for the app to work";
+});
+
 function resetListOfServers() {
   const span = document.getElementById('servers-list');
   span.innerHTML = ``;
