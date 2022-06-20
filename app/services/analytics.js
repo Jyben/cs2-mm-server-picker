@@ -5,7 +5,7 @@ let AnalyticsService = function () { }
 AnalyticsService.prototype.postImalive = async function (version) {
   try {
     await Axios({
-      url: `https://jyben.dev/api/imalive`,
+      url: `http://jyben.dev/api/imalive`,
       method: 'post',
       headers: {
         Application: 'csgo-mm-server-picker',
