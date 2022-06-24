@@ -1,13 +1,13 @@
 #ping {
-  color:hsl(222, 53%, 50%); 
+  color: hsl(222, 53%, 50%);
 }
 
 #firewall-block {
-  color:hsl(222, 53%, 50%); 
+  color: hsl(222, 53%, 50%);
 }
 
 #csgo {
-  color:hsl(222, 53%, 50%); 
+  color: hsl(222, 53%, 50%);
 }
 
 #firewall-reset {
@@ -74,8 +74,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .dot-green {
@@ -93,25 +98,30 @@
   0% {
     -webkit-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0.63);
   }
+
   70% {
-      -webkit-box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
+    -webkit-box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
   }
+
   100% {
-      -webkit-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
+    -webkit-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
   }
 }
+
 @keyframes pulse-green {
   0% {
     -moz-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0.63);
     box-shadow: 0 0 0 0 rgba(82, 255, 59, 0.63);
   }
+
   70% {
-      -moz-box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
-      box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
+    -moz-box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
+    box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
   }
+
   100% {
-      -moz-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
-      box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
+    -moz-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
+    box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
   }
 }
 
@@ -130,25 +140,30 @@
   0% {
     -webkit-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0.63);
   }
+
   70% {
-      -webkit-box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
+    -webkit-box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
   }
+
   100% {
-      -webkit-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
+    -webkit-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
   }
 }
+
 @keyframes pulse-red {
   0% {
     -moz-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0.63);
     box-shadow: 0 0 0 0 rgba(255, 82, 59, 0.63);
   }
+
   70% {
-      -moz-box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
-      box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
+    -moz-box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
+    box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
   }
+
   100% {
-      -moz-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
-      box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
+    -moz-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
+    box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
   }
 }
 
@@ -161,4 +176,36 @@
   text-align: center;
   color: white;
   box-shadow: 0 0 6px 0 #cdcdda;
+}
+
+.footer-top {
+  background-color: var(--color-bg);
+  height: 11%;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  line-height: 1;
+  color: rgb(202 58 58);
+  font-family: -webkit-pictograph;
+  text-align: center;
+  font-size: revert;
+  font-weight: bold;
+}
+
+.footer-bot {
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: url("../img/CSGOEmpire.gif");
+  background-size: 100%;
+}
+
+.main-footer {
+  height: 26.5%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }

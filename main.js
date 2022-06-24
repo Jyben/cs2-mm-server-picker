@@ -19,7 +19,7 @@ function initialize() {
   imAlive();
 
   function createWindow() {
-    win = new BrowserWindow({ show: false, width: 1200, height: 475, webPreferences: { nodeIntegration: true }, resizable: false });
+    win = new BrowserWindow({ show: false, width: 1200, webPreferences: { nodeIntegration: true }, resizable: false });
     win.loadFile('./index.html');
 
     win.setMenuBarVisibility(false);

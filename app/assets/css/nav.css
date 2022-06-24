@@ -7,9 +7,11 @@
   color: var(--color-subtle);
   border-right: 1px solid var(--color-border);
   background-color: var(--color-bg);
+  height: 74%;
 }
+
 .nav.is-shown {
-  visibility: visible;;
+  visibility: visible;
   opacity: 1;
 }
 
@@ -38,8 +40,10 @@
   position: absolute;
   width: 36px;
   height: 36px;
-  top: 1.5rem; /* magic */
-  right: 1.75rem; /* magic */
+  top: 1.5rem;
+  /* magic */
+  right: 1.75rem;
+  /* magic */
 }
 
 
@@ -67,7 +71,8 @@
   display: block;
   width: 100%;
   padding: .3rem;
-  padding-left: calc(2rem + 16px + .5rem); /* padding + icon + magic */
+  padding-left: calc(2rem + 16px + .5rem);
+  /* padding + icon + magic */
   line-height: 2;
   text-align: left;
   font: inherit;
@@ -78,17 +83,21 @@
   cursor: default;
   outline: none;
 }
+
 .nav-button:hover,
 .nav-button:focus:not(.is-selected) {
-  background-color: hsla(0,0%,0%,.1);
+  background-color: hsla(0, 0%, 0%, .1);
 }
+
 .nav-button.is-selected {
   background-color: var(--color-accent);
 }
+
 .nav-button.is-selected,
 .nav-button.is-selected em {
   color: #fff;
 }
+
 .nav-button.is-selected:focus {
   opacity: .8;
 }
@@ -97,7 +106,8 @@
   font-style: normal;
   font-weight: 600;
   color: var(--color-strong);
-  pointer-events: none; /* makes it invisible to clicks */
+  pointer-events: none;
+  /* makes it invisible to clicks */
 }
 
 .nav-footer {
@@ -126,15 +136,17 @@
   cursor: pointer;
   outline: none;
 }
+
 .nav-footer-button:focus {
   color: var(--color-strong);
 }
 
 .nav-footer-logo {
-  color: hsl(0,0%,66%);
+  color: hsl(0, 0%, 66%);
 }
+
 .nav-footer-logo:focus {
-  color: hsl(0,0%,33%);
+  color: hsl(0, 0%, 33%);
 }
 
 /* Remove border on the logo */

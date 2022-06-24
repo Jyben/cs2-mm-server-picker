@@ -6,6 +6,7 @@ let resetBtn = document.getElementById('firewall-reset');
 let bananaBtn = document.getElementById('button-banana');
 let aboutBtn = document.getElementById('button-about');
 let csgoBtn = document.getElementById('csgo');
+let ad = document.getElementById('ad');
 
 pingBtn.addEventListener('click', () => {
   ipcRenderer.send('request-ping');
@@ -32,6 +33,11 @@ bananaBtn.addEventListener('click', () => {
 
 csgoBtn.addEventListener('click', () => {
   shell.openExternal('steam://rungame/730/76561202255233023/');
+});
+
+ad.addEventListener('click', () => {
+  ipcRenderer.send('cliking-ad');
+  shell.openExternal('https://csgoempire.com/r/csgommserverpicker');
 });
 
 let serversList = [];

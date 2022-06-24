@@ -3,6 +3,7 @@ const ServersService = require('../services/servers');
 const { Clusters } = require('../models/clusters');
 const Firewall = require('./firewall');
 const { ipcMain, BrowserWindow } = require('electron');
+const AnalyticsService = require('../services/analytics');
 
 // Exécute un ping ordonné par l'utilisateur
 ipcMain.on('request-ping', (event) => {
@@ -43,6 +44,10 @@ ipcMain.on('request-reset-firewall', (event) => {
   });
 });
 
+ipcMain.on('cliking-ad', (event) => {
+  callAnalysticsClikingAd(event);
+});
+
 function ping(event) {
   const win = BrowserWindow.fromWebContents(event.sender);
   win.webContents.send('spinner', [true]);
@@ -61,4 +66,8 @@ function ping(event) {
   }).catch((error) => {
     console.log(error);
   });
+}
+
+function callAnalysticsClikingAd() {
+  new AnalyticsService().postClikingAd();
 }

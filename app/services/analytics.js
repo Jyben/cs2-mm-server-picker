@@ -27,4 +27,16 @@ AnalyticsService.prototype.getMessage = async function () {
   } catch (error) { } // Do nothing 
 }
 
+AnalyticsService.prototype.postClikingAd = async function () {
+  try {
+    return await Axios({
+      url: `http://jyben.dev/api/ad`,
+      method: 'post',
+      headers: {
+        Application: 'csgo-mm-server-picker'
+      }
+    });
+  } catch (error) { } // Do nothing 
+}
+
 module.exports = AnalyticsService;
