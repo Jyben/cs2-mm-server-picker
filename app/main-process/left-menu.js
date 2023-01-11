@@ -32,8 +32,8 @@ ipcMain.on('request-reset-firewall', (event) => {
     const clusters = new Clusters(response.data);
     clusters.convert();
 
-    if (process.platform === 'linux') {
-      new Firewall(win, clusters.clustersId, clusters).reset();
+    if (process.platform === 'linux' || process.platform === 'darwin') {
+      new Firewall(win, clusters).reset();
     }
 
     if (process.platform === 'win32') {
