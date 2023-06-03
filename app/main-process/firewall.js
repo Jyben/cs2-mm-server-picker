@@ -1,5 +1,6 @@
 const { app } = require('electron');
 const sudo = require('sudo-prompt');
+const { exec } = require('child_process');
 const { Clusters } = require('../models/clusters');
 const PingWrapper = require('./ping');
 const ServersService = require('../services/servers');
@@ -44,11 +45,23 @@ Firewall.prototype.reset = function () {
 
       this._clusters.clustersId.forEach(id => {
 
+        if (this._clusters.pops[id].relayAddresses === undefined) {
+          return;
+        }
+
         this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
+
+          if (relayAddresse === undefined) {
+          return;
+        }
           this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
         });
 
         this._clusters.pops[id].relayAddresses.forEach(addresse => {
+          if (addresse === undefined || addresse.includes('undefined')) {
+            return;
+          }
+
           command += `iptables -D INPUT -s ${addresse} -j DROP\n`;
         });
       });
