@@ -1,6 +1,5 @@
 const { app } = require('electron');
 const sudo = require('sudo-prompt');
-const { exec } = require('child_process');
 const { Clusters } = require('../models/clusters');
 const PingWrapper = require('./ping');
 const ServersService = require('../services/servers');
