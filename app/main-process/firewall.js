@@ -5,11 +5,12 @@ const PingWrapper = require('./ping');
 const ServersService = require('../services/servers');
 const Files = require('./util');
 const log = require('./log');
+const Darwin = require("../services/darwin");
 
-let Firewall = function (win, clustersId, clusters) {
-  this._clustersId = clustersId;
+let Firewall = function (win, clusters) {
   this._clusters = clusters;
   this._win = win;
+  this._darwin = new Darwin(this._win, _execBash);
 }
 
 Firewall.prototype.exec = function (ipList) {
@@ -25,7 +26,7 @@ Firewall.prototype.exec = function (ipList) {
       break;
 
     case 'darwin':
-
+      this._darwin.block(ipList);
       break;
 
     default:
@@ -61,7 +62,7 @@ Firewall.prototype.reset = function () {
       break;
 
     case 'darwin':
-
+      this._darwin.reset();
       break;
 
     default:
