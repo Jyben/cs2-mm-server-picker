@@ -3,7 +3,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
-# **CS:GO** MM SERVER PICKER
+# **CS2** MM SERVER PICKER
 
 ![app](https://github.com/Jyben/csgo-mm-server-picker/blob/master/app/assets/img/app.gif)
 
