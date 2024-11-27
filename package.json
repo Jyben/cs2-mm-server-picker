@@ -16,8 +16,8 @@
     "url": "https://github.com/Jyben/csgo-mm-server-picker.git"
   },
   "devDependencies": {
-    "electron": "^11.5.0",
-    "electron-builder": "^22.9.1"
+    "electron": "^25.1.0",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
     "axios": "^0.21.2",
