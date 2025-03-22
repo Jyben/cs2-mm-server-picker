@@ -68,23 +68,37 @@ Converter.prototype.convert = function (clusterInstance) {
   clusterInstance.pops['vie'] = new ClusterBase((pops.vie === undefined ? undefined : pops.vie.relays), 'Vienna', 'eu-east');
   clusterInstance.pops['waw'] = new ClusterBase((pops.waw === undefined ? undefined : pops.waw.relays), 'Warsaw', 'eu-east');
   // concat
-  clusterInstance.pops['tyo'].relayAddresses = clusterInstance.pops['tyo'].relayAddresses.concat(clusterInstance.pops['tyo1'].relayAddresses).concat(clusterInstance.pops['gnrt'].relayAddresses);
+  if (clusterInstance.pops['tyo'].relayAddresses){
+    clusterInstance.pops['tyo'].relayAddresses = clusterInstance.pops['tyo'].relayAddresses.concat(clusterInstance.pops['tyo1'].relayAddresses).concat(clusterInstance.pops['gnrt'].relayAddresses);
+  }
   clusterInstance.pops['tyo1'].relayAddresses = [];
   clusterInstance.pops['gnrt'].relayAddresses = [];
-  clusterInstance.pops['sto'].relayAddresses = clusterInstance.pops['sto'].relayAddresses.concat(clusterInstance.pops['sto2'].relayAddresses);
+  if (clusterInstance.pops['sto'].relayAddresses){
+    clusterInstance.pops['sto'].relayAddresses = clusterInstance.pops['sto'].relayAddresses.concat(clusterInstance.pops['sto2'].relayAddresses);
+  }
   clusterInstance.pops['sto2'].relayAddresses = [];
-  clusterInstance.pops['tsn'].relayAddresses = clusterInstance.pops['tsn'].relayAddresses.concat(clusterInstance.pops['tsnt'].relayAddresses).concat(clusterInstance.pops['tsnu'].relayAddresses);
+  if (clusterInstance.pops['tsn'].relayAddresses){
+    clusterInstance.pops['tsn'].relayAddresses = clusterInstance.pops['tsn'].relayAddresses.concat(clusterInstance.pops['tsnt'].relayAddresses).concat(clusterInstance.pops['tsnu'].relayAddresses);
+  }
   clusterInstance.pops['tsnu'].relayAddresses = [];
   clusterInstance.pops['tsnt'].relayAddresses = [];
-  clusterInstance.pops['can'].relayAddresses = clusterInstance.pops['can'].relayAddresses.concat(clusterInstance.pops['cant'].relayAddresses).concat(clusterInstance.pops['canu'].relayAddresses);
+  if(clusterInstance.pops['can'].relayAddresses){
+    clusterInstance.pops['can'].relayAddresses = clusterInstance.pops['can'].relayAddresses.concat(clusterInstance.pops['cant'].relayAddresses).concat(clusterInstance.pops['canu'].relayAddresses);
+  }
   clusterInstance.pops['cant'].relayAddresses = [];
   clusterInstance.pops['canu'].relayAddresses = [];
-  clusterInstance.pops['sha'].relayAddresses = clusterInstance.pops['sha'].relayAddresses.concat(clusterInstance.pops['shat'].relayAddresses).concat(clusterInstance.pops['shau'].relayAddresses);
+  if(clusterInstance.pops['sha'].relayAddresses){
+    clusterInstance.pops['sha'].relayAddresses = clusterInstance.pops['sha'].relayAddresses.concat(clusterInstance.pops['shat'].relayAddresses).concat(clusterInstance.pops['shau'].relayAddresses);
+  }
   clusterInstance.pops['shat'].relayAddresses = [];
   clusterInstance.pops['shau'].relayAddresses = [];
-  clusterInstance.pops['fra'].relayAddresses = clusterInstance.pops['fra'].relayAddresses.concat(clusterInstance.pops['aec1'].relayAddresses)
+  if(clusterInstance.pops['fra'].relayAddresses){
+    clusterInstance.pops['fra'].relayAddresses = clusterInstance.pops['fra'].relayAddresses.concat(clusterInstance.pops['aec1'].relayAddresses)
+  }
   clusterInstance.pops['aec1'].relayAddresses = [];
-  clusterInstance.pops['hkg'].relayAddresses = clusterInstance.pops['hkg'].relayAddresses.concat(clusterInstance.pops['aae1'].relayAddresses)
+  if(clusterInstance.pops['hkg'].relayAddresses){
+    clusterInstance.pops['hkg'].relayAddresses = clusterInstance.pops['hkg'].relayAddresses.concat(clusterInstance.pops['aae1'].relayAddresses)
+  }
   clusterInstance.pops['aae1'].relayAddresses = [];
 }
 
